@@ -1,6 +1,6 @@
 const _ = require('lodash');
 const request = require('request-promise');
-const Exchange = require('.');
+const Exchange = require('../../lib/exchange');
 
 class Kucoin extends Exchange {
   getTicker() {
@@ -16,7 +16,6 @@ class Kucoin extends Exchange {
           coinB: rate.coinTypePair,
           buy:   rate.buy,
           sell:  rate.sell,
-          rate:  ((rate.buy+rate.sell)/2),
         };
       })
       .compact()
@@ -24,6 +23,8 @@ class Kucoin extends Exchange {
     });
   }
 
+  getBuyOrder(coin, market) {
+  }
 }
 
 module.exports = Kucoin;

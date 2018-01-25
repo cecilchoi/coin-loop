@@ -1,7 +1,7 @@
 const _ = require('lodash');
 const request = require('request-promise');
 const Promise = require('bluebird');
-const Exchange = require('.');
+const Exchange = require('../../lib/exchange');
 
 
 class Binance extends Exchange {
@@ -25,7 +25,8 @@ class Binance extends Exchange {
           return {
             coinA: lookup[ticker.symbol].baseAsset,
             coinB: lookup[ticker.symbol].quoteAsset,
-            rate:  ticker.price,
+            buy:   ticker.bidPrice,
+            sell:  ticker.askPrice,
           };
         });
       });
